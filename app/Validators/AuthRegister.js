@@ -13,11 +13,15 @@ class AuthRegister {
 
   get rules () {
     return {
-      username             : 'required|string|max:80|unique:users',
+      username             : 'required|string|min:3|max:15|regex:^[a-zA-Z0-9_]*$|unique:users',
       email                : 'required|email|max:254|unique:users',
       password             : 'required|string|min:6|max:60',
       password_confirmation: 'required_if:password|same:password',
     };
+  }
+
+  async fails (errorMessages) {
+    return this.ctx.response.send(errorMessages);
   }
 }
 
