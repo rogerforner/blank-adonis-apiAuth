@@ -6,10 +6,10 @@ const Mail       = use('Mail');
 
 const SendEmailVerifyEmail = exports = module.exports = {}
 
-SendEmailVerifyEmail.method = async (user, token) => {
+SendEmailVerifyEmail.method = async ({ user, token }) => {
   Mail.send('emails.auth.verify-email', {
     user,
-    token: Encryption.base64Encode(token),
+    token: Encryption.encrypt(token),
     url  : Env.get('APP_URL')
   },
   (message) => {

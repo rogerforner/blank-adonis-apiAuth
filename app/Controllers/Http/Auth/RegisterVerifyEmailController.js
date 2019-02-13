@@ -5,7 +5,7 @@ const Persona    = use('Persona');
 
 class RegisterVerifyEmailController {
   async validate ({ request, response }) {
-    const token = Encryption.base64Decode(request.input('token'));
+    const token = Encryption.decrypt(request.input('token'));
     
     await Persona.verifyEmail(token);
 
