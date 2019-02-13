@@ -17,8 +17,8 @@ const Route = use('Route');
 
 Route.get('/', () => {
   return { greeting: 'Hello world in JSON' }
-})
+});
 
 Route.group(() => {
-  Route.post('register', 'RegisterController.store');
+  Route.post('register', 'RegisterController.store').validator('AuthRegister');
 }).prefix('auth').namespace('Auth');
