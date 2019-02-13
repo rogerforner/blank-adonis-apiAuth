@@ -2,4 +2,4 @@
 
 const Event = use('Event');
 
-Event.on('user::created', 'SendEmailAuthRegisterVerification.method');
+Event.on('user::created', 'Auth/SendEmailVerifyEmail.method');

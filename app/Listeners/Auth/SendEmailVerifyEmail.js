@@ -4,10 +4,10 @@ const Encryption = use('Encryption');
 const Env        = use('Env');
 const Mail       = use('Mail');
 
-const SendEmailAuthRegisterVerification = exports = module.exports = {}
+const SendEmailVerifyEmail = exports = module.exports = {}
 
-SendEmailAuthRegisterVerification.method = async (user, token) => {
-  Mail.send('emails.auth-register-verification', {
+SendEmailVerifyEmail.method = async (user, token) => {
+  Mail.send('emails.auth.verify-email', {
     user,
     token: Encryption.base64Encode(token),
     url  : Env.get('APP_URL')
