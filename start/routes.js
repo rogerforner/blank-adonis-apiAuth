@@ -24,3 +24,7 @@ Route.group(() => {
   Route.post('verify-email/:token', 'RegisterVerifyEmailController.validate');
   Route.post('login', 'LoginController.authenticate').validator('AuthLogin');
 }).prefix('auth').namespace('Auth');
+
+Route.group(() => {
+  Route.delete('logout', 'LogoutController.deauthenticate');
+}).prefix('auth').namespace('Auth').middleware(['auth']);
