@@ -4,14 +4,15 @@ const Encryption = use('Encryption');
 const Persona    = use('Persona');
 
 class RegisterVerifyEmailController {
-  async validate ({ request, response }) {
-    const token = Encryption.base64Decode(request.input('token'));
+  async validate ({ params, response }) {
+    const token = Encryption.base64Decode(params.input('token'));
     
-    await Persona.verifyEmail(token);
+    const user = await Persona.verifyEmail(token);
 
     return response.ok({
+      user,
       status: 200,
-      message: 'Account validated successfully',
+      message: 'Email verified successfully',
     });
   }
 }

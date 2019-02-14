@@ -8,7 +8,6 @@ class Token extends Model {
    * A relationship.
    *
    * @method user
-   *
    * @return {Object}
    */
   user () {
