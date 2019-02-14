@@ -7,12 +7,11 @@ class RegisterVerifyEmailController {
   async validate ({ params, response }) {
     const token = Encryption.base64Decode(params.token);
     
-    const user = await Persona.verifyEmail(token);
+    await Persona.verifyEmail(token);
 
     return response.ok({
-      user,
       status: 200,
-      message: 'Email verified successfully',
+      message: 'Email verified successfully'
     });
   }
 }
