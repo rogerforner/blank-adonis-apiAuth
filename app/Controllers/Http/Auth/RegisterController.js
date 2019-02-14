@@ -13,7 +13,7 @@ class RegisterController {
 
     await Persona.register(payload);
     // const user = await Persona.register(payload);
-    // await auth.login(user);
+    // await auth.generate(user);
 
     return response.ok({
       // user,

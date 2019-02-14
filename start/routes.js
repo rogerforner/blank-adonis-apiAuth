@@ -22,4 +22,5 @@ Route.get('/', () => {
 Route.group(() => {
   Route.post('register', 'RegisterController.store').validator('AuthRegister');
   Route.post('verify-email/:token', 'RegisterVerifyEmailController.validate');
+  Route.post('login', 'LoginController.authenticate').validator('AuthLogin');
 }).prefix('auth').namespace('Auth');
