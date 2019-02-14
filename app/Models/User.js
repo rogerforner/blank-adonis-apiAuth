@@ -4,22 +4,25 @@ const Hash  = use('Hash');
 const Model = use('Model');
 
 class User extends Model {
+  // GANCHOS (hooks)
+  // -------------------------------------------------------------------------------------------------------------------
+
   static boot () {
     super.boot();
 
-    /**
-     * A hook to hash the user password before saving
-     * it to the database.
-     */
+    // Hacer hash a la contraseña del usuario antes de guardarla en la BD.
     this.addHook('beforeSave', async (userInstance) => {
       if (userInstance.dirty.password) {
-        userInstance.password = await Hash.make(userInstance.password)
+        userInstance.password = await Hash.make(userInstance.password);
       }
-    })
+    });
   }
 
+  // VISBILIDAD de ATRIBUTOS
+  // -------------------------------------------------------------------------------------------------------------------
+
   /**
-   * The attributes that should be visible for arrays.
+   * Atributos que serán visibles en los arrays.
    *
    * @var array
    */
@@ -27,10 +30,14 @@ class User extends Model {
     return ['email', 'name', 'username', 'account_status', 'id'];
   }
 
+  // RELACIONES
+  // -------------------------------------------------------------------------------------------------------------------
+
   /**
-   * A relationship.
+   * 1 Usuario tiene N Tokens.
+   * Se inserta relación belongsTo en Models/Tokens.
    *
-   * @method tokens
+   * @method tokens Plural.
    * @return {Object}
    */
   tokens () {
@@ -38,4 +45,4 @@ class User extends Model {
   }
 }
 
-module.exports = User
+module.exports = User;
