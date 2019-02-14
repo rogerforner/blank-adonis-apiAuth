@@ -6,12 +6,11 @@ class LoginController {
   async authenticate ({ request, auth, response }) {
     const payload = request.only(['password', 'uid']);
 
-    const user = await Persona.verify(payload);
-
-    await auth.generate(user);
+    const user        = await Persona.verify(payload);
+    const accessToken = await auth.generate(user);
 
     return response.ok({
-      // user,
+      accessToken,
       status: 200,
       message: 'Logged in successfully'
     });

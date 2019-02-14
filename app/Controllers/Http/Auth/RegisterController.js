@@ -12,11 +12,11 @@ class RegisterController {
     ]);
 
     await Persona.register(payload);
-    // const user = await Persona.register(payload);
-    // await auth.generate(user);
+    // const user        = await Persona.register(payload);
+    // const accessToken = await auth.generate(user);
 
     return response.ok({
-      // user,
+      // accessToken,
       status: 200,
       message: 'Account created successfully'
     });
