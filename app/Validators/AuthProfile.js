@@ -13,7 +13,7 @@ class AuthProfile {
 
   get rules () {
     // ID del usuario. "auth" lo obtenemos de los parámetros del método update() del ProfileController. Utilizado para
-    // ignorar éste usuario en las reglas "unique".
+    // ignorarlo en las reglas "unique".
     const userID = this.ctx.auth.user.id;
 
     return {
