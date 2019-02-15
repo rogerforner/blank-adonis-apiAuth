@@ -27,4 +27,5 @@ Route.group(() => {
 
 Route.group(() => {
   Route.delete('logout', 'LogoutController.deauthenticate');
+  Route.put('profile', 'ProfileController.update').validator('AuthProfile');
 }).prefix('auth').namespace('Auth').middleware(['auth']);
