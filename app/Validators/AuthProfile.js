@@ -28,4 +28,4 @@ class AuthProfile {
   }
 }
 
-module.exports = AuthProfile
+module.exports = AuthProfile;

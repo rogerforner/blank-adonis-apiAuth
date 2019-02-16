@@ -23,9 +23,12 @@ Route.group(() => {
   Route.post('register', 'RegisterController.store').validator('AuthRegister');
   Route.post('verify-email/:token', 'RegisterVerifyEmailController.validate');
   Route.post('login', 'LoginController.authenticate').validator('AuthLogin');
+  Route.post('psw-forgot', 'PasswordController.forgotPassword');
+  Route.put('psw-update/:token', 'PasswordController.updatePasswordByToken').validator('AuthPasswordToken');
 }).prefix('auth').namespace('Auth');
 
 Route.group(() => {
   Route.delete('logout', 'LogoutController.deauthenticate');
   Route.put('profile', 'ProfileController.update').validator('AuthProfile');
+  Route.put('psw-update', 'PasswordController.updatePassword').validator('AuthPassword');
 }).prefix('auth').namespace('Auth').middleware(['auth']);
