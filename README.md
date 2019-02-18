@@ -82,6 +82,12 @@ Ejecutar el siguente comando para llevar adelante las migraciones.
 > adonis migration:run
 ```
 
+# Servidor de desarrollo
+
+```bash
+> adonis serve --dev
+```
+
 # Routes
 
 ```bash
@@ -108,10 +114,4 @@ Ejecutar el siguente comando para llevar adelante las migraciones.
 ├───────────────────────────┼──────────┼───────────────────────────────────────────────┼──────────────────────┼──────────────────────┼────────┤
 │ /auth/psw-update          │ PUT      │ Auth/PasswordController.updatePassword        │ auth,av:AuthPassword │ /psw-update          │        │
 └───────────────────────────┴──────────┴───────────────────────────────────────────────┴──────────────────────┴──────────────────────┴────────┘
-```
-
-# Servidor de desarrollo
-
-```bash
-> adonis serve --dev
 ```

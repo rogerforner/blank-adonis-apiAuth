@@ -13,10 +13,14 @@
 |
 */
 
+const Env   = use('Env');
 const Route = use('Route');
 
 Route.get('/', () => {
-  return { greeting: 'Hello world in JSON' }
+  return {
+    this  : Env.get('APP_NAME'),
+    uptime: process.uptime()
+  };
 });
 
 Route.group(() => {
