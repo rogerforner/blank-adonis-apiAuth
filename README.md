@@ -9,6 +9,10 @@
 - [5. Routes](#5-routes)
 - [6. Controllers](#5-controllers)
   - [6.1. Auth](#61-auth)
+- [7. Listeners](#7-listeners)
+  - [7.1. Auth](#71-auth)
+- [8. Middleware](#8-middleware)
+- [9. Validators](#9-validators)
 
 # 1. Info
 
@@ -19,6 +23,10 @@
 ```
 
 La intención de este repositorio es la de ahorrarnos tiempo cada vez que queramos iniciar un proyecto **API** que requiera de autenticación de usuarios.
+
+**TODO**
+
+- [ ] Middleware para cuenta verificada
 
 # 2. Enlaces
 
@@ -153,8 +161,8 @@ Controladores utilizados única y exclusivamente para llevar adelante la autenti
 - **LoginController**: Gestionar la autenticación de los usuarios. Devuelve un token cuyo será utilizado para realizar las peticiones HTTP a través del _middleware auth_.
 - **LogoutController**: Gestionar la desautenticación de los usuarios. El equivalente a cerrar la sesión iniciada através del _LoginController_.
 - **PasswordController**: Gestionar todas las peticiones relacionadas con el password:
-  - **Actualizar paswword** a través del método `updatePassword ({ request, auth, response }) {}`. Útil si el usuario está autentificado (panel de administración).
-  - **Actualizar paswword (token)** a través del método `updatePasswordByToken ({ request, params, response }) {}`. Útil si el usuario necesita recuperar el password y no tiene acceso (no auth).
+  - **Actualizar password** a través del método `updatePassword ({ request, auth, response }) {}`. Útil si el usuario está autentificado (panel de administración).
+  - **Actualizar password (token)** a través del método `updatePasswordByToken ({ request, params, response }) {}`. Útil si el usuario necesita recuperar el password y no tiene acceso (no auth).
   - Solicitud de **Recuperar password** a través del método `forgotPassword ({ request }) {}`. Conseguiremos el token para el método _updatePasswordByToken()_.
 - **ProfileController**: Gestionar todas las peticiones relacionas con el perfil del usuario (email, nombre de usuario, nombre...):
   - **Obtener datos usuario** a través del método `currentData ({ auth }) {}`.
@@ -175,6 +183,25 @@ Event.on('user::created', 'Auth/SendEmailVerifyEmail.method');
 Event.on('forgot::password', 'Auth/SendEmailForgotPassword.method');
 ```
 
+## 7.1. Auth
+
 - **SendEmailForgotPassword**: Enviar un correo electrónico de recuperación de contraseña.
 - **SendEmailVerifyEmail**: Enviar un correo electrónico cuando se registra un usuario con la intención de verificar la cuenta.
 
+# 8. Middleware
+
+> _app/Middleware_
+
+- **ForceJson**: Forzar las respuestas en JSON. Por ejemplo, evitar las respuestas de errores en HTML.
+
+# 9. Validators
+
+> _app/Validators_
+
+Los "validators" se utilizan para procesar/validar los datos recibidos a la API a través de los controladores. Estos datos se suelen pasar a través de, por ejemplo, un formulario.
+
+- **AuthLogin**: Validar los datos necesarios para efectuar el login/autenticación del usuario.
+- **AuthPassword**: Validar los datos necesarios para actualizar el password del usuario (auth - panel de administración).
+- **AuthPasswordByToken**: Validar los datos necesarios para actualizar el password del usuario (no auth - recuperar password).
+- **AuthProfile**: Validar los datos que forman el perfil del usuario (sin tener en cuenta sus uids).
+- **AuthRegister**: Validar los datos necesarios para efectuar el registro de un usuario.
