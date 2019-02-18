@@ -1,4 +1,4 @@
-[[TOC]]
+> **blank-adonis-apiAuth**, licencia [MIT](https://github.com/rogerforner/blank-adonis-apiAuth/blob/master/LICENCE.md).
 
 # Info
 
