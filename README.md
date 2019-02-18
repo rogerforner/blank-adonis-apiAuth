@@ -12,7 +12,6 @@ La intención de este repositorio es la de ahorrarnos tiempo cada vez que queram
 
 - [Adonis](https://adonisjs.com/)
 - [Adonis, Documentación](https://adonisjs.com/docs/4.1/installation)
-- [Adonis Persona](https://github.com/adonisjs/adonis-persona)
 
 **Consultados**:
 
