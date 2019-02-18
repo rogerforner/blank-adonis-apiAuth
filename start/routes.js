@@ -35,6 +35,7 @@ Route.group(() => {
 
 Route.group(() => {
   Route.delete('logout', 'LogoutController.deauthenticate');
-  Route.put('profile', 'ProfileController.update').validator('AuthProfile');
+  Route.get('profile', 'ProfileController.currentData');
+  Route.put('profile-update', 'ProfileController.update').validator('AuthProfile');
   Route.put('psw-update', 'PasswordController.updatePassword').validator('AuthPassword');
 }).prefix('auth').namespace('Auth').middleware(['auth']);
