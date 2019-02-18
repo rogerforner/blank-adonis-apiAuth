@@ -2,7 +2,7 @@
 
 const { formatters } = use('Validator');
 
-class AuthPassword {
+class AuthPasswordByToken {
   get formatter () {
     return formatters.JsonApi;
   }
@@ -23,4 +23,4 @@ class AuthPassword {
   // }
 }
 
-module.exports = AuthPasswordToken;
+module.exports = AuthPasswordByToken;

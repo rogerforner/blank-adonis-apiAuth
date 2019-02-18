@@ -24,7 +24,7 @@ Route.group(() => {
   Route.post('verify-email/:token', 'RegisterVerifyEmailController.validate');
   Route.post('login', 'LoginController.authenticate').validator('AuthLogin');
   Route.post('psw-forgot', 'PasswordController.forgotPassword');
-  Route.put('psw-update/:token', 'PasswordController.updatePasswordByToken').validator('AuthPasswordToken');
+  Route.put('psw-update/:token', 'PasswordController.updatePasswordByToken').validator('AuthPasswordByToken');
 }).prefix('auth').namespace('Auth');
 
 Route.group(() => {

@@ -1,6 +1,7 @@
 'use strict'
 
-const Persona = use("Persona");
+const Encryption = use('Encryption');
+const Persona    = use("Persona");
 
 class PasswordController {
   // ACTUALIZAR PASSWORD
@@ -25,7 +26,7 @@ class PasswordController {
   // ACTUALIZAR PASSWORD con un TOKEN
   // -------------------------------------------------------------------------------------------------------------------
   async updatePasswordByToken ({ request, params, response }) {
-    const token   = params.token;
+    const token   = Encryption.base64Decode(params.token);
     const payload = request.only([
       'password',
       'password_confirmation'
