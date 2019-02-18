@@ -1,12 +1,25 @@
 > **blank-adonis-apiAuth**, licencia [MIT](https://github.com/rogerforner/blank-adonis-apiAuth/blob/master/LICENCE.md).
 
-# Info
+- [1. Info](#1-info)
+- [2. Enlaces](#2-enlaces)
+- [3. Instalación](#3-instalación)
+  - [3.1. Configuración](#31-configuración)
+  - [3.2. Migraciones](#32-migraciones)
+- [4. Servidor de desarrollo](#4-servidor-de-desarrollo)
+- [5. Routes](#5-routes)
+- [6. Controllers](#5-controllers)
 
-> API realizada con el framework de _Node.js_ Adonis.
+# 1. Info
+
+> API realizada con el framework de _Node.js_ **Adonis.js**.
+
+```bash
+> adonis new nombreProyecto --api-only
+```
 
 La intención de este repositorio es la de ahorrarnos tiempo cada vez que queramos iniciar un proyecto **API** que requiera de autenticación de usuarios.
 
-# Enlaces
+# 2. Enlaces
 
 **Principales**:
 
@@ -21,7 +34,7 @@ La intención de este repositorio es la de ahorrarnos tiempo cada vez que queram
 - [How to prevent default html reponse on api only project errors?](https://github.com/adonisjs/adonis-framework/issues/919)
   - Para visualizar las respuestas en JSON y no html hay que modificar la variable `NODE_ENV=development` a `NODE_ENV=production`.
 
-# Instalación
+# 3. Instalación
 
 Descargamos el repositorio con [git](https://git-scm.com/).
 
@@ -58,7 +71,7 @@ Instalamos las dependencias con [npm](https://www.npmjs.com/).
 
 > "sqlite3" cambiará dependiendo del tipo de gestor [de base de datos que se vaya a utilizar](https://adonisjs.com/docs/4.1/database).
 
-## Configuración
+## 3.1. Configuración
 
 Copiamos el archivo _.env.example_ a _.env_ e insertamos todos los datos necesarios.
 
@@ -76,7 +89,7 @@ Generamos la APP_KEY.
 
 - *MAIL_FROM=* Insteraremos el email que queramos que aparezca como remitente. Por ejemplo no-reply@rogerforner.com.
 
-## Migraciones
+## 3.2. Migraciones
 
 Ejecutar el siguente comando para llevar adelante las migraciones.
 
@@ -84,13 +97,15 @@ Ejecutar el siguente comando para llevar adelante las migraciones.
 > adonis migration:run
 ```
 
-# Servidor de desarrollo
+# 4. Servidor de desarrollo
 
 ```bash
 > adonis serve --dev
 ```
 
-# Routes
+# 5. Routes
+
+> _start/routes.js_
 
 ```bash
 > adonis route:list
@@ -124,4 +139,23 @@ Encabezado necesario para las peticiones a la API a través de una ruta protegid
 
 - Authorization: Bearer tokenUsuario
 
-> Es necesario el token del usuario para llevar adelante las peticiones http.
+> Es necesario el token del usuario para llevar adelante las peticiones HTTP.
+
+# 6. Controllers
+
+> _app/Controllers_
+
+## 6.1. Auth
+
+Controladores utilizados única y exclusivamente para llevar adelante la autenticación de usuarios así como, también, la obtención de los datos del usuario autentificado.
+
+- **LoginController**: Gestionar la autenticación de los usuarios. Devuelve un token cuyo será utilizado para realizar las peticiones HTTP a través del _middleware auth_.
+- **LogoutController**: Gestionar la desautenticación de los usuarios. El equivalente a cerrar la sesión iniciada através del _LoginController_.
+- **PasswordController**: Gestionar todas las peticiones relacionadas con el password:
+  - **Actualizar paswword** a través del método `updatePassword ({ request, auth, response }) {}`. Útil si el usuario está autentificado (panel de administración).
+  - **Actualizar paswword (token)** a través del método `updatePasswordByToken ({ request, params, response }) {}`. Útil si el usuario necesita recuperar el password y no tiene acceso (no auth).
+  - Solicitud de **Recuperar password** a través del método `forgotPassword ({ request }) {}`. Conseguiremos el token para el método _updatePasswordByToken()_.
+- **ProfileController**: Gestionar todas las peticiones relacionas con el perfil del usuario (email, nombre de usuario, nombre...):
+  - **Obtener datos usuario** a través del método `currentData ({ auth }) {}`.
+  - **Actualizar datos usuario** a través del método `update ({ request, auth, response }) {}`.
+- **RegisterController**: Gestionar el registro de un usuario.
