@@ -8,6 +8,7 @@
 - [4. Servidor de desarrollo](#4-servidor-de-desarrollo)
 - [5. Routes](#5-routes)
 - [6. Controllers](#5-controllers)
+  - [6.1. Auth](#61-auth)
 
 # 1. Info
 
@@ -87,7 +88,7 @@ Generamos la APP_KEY.
 
 **Variables propias**:
 
-- *MAIL_FROM=* Insteraremos el email que queramos que aparezca como remitente. Por ejemplo no-reply@rogerforner.com.
+- `MAIL_FROM=` Insteraremos el email que queramos que aparezca como remitente. Por ejemplo `MAIL_FROM=no-reply@rogerforner.com`.
 
 ## 3.2. Migraciones
 
@@ -143,7 +144,7 @@ Encabezado necesario para las peticiones a la API a través de una ruta protegid
 
 # 6. Controllers
 
-> _app/Controllers_
+> _app/Controllers/Http_
 
 ## 6.1. Auth
 
@@ -159,3 +160,21 @@ Controladores utilizados única y exclusivamente para llevar adelante la autenti
   - **Obtener datos usuario** a través del método `currentData ({ auth }) {}`.
   - **Actualizar datos usuario** a través del método `update ({ request, auth, response }) {}`.
 - **RegisterController**: Gestionar el registro de un usuario.
+- **RegisterVerifyEmailController**: Gestionar si un usuario ha verificado su cuenta haciendo clic en el enlace enviado a través de correo electrónico.
+
+# 7. Listeners
+
+> _app/Listeners_
+
+Los "listeners" son llamados a través de los eventos, cuyos se encuentran en _start/events.js_. Mirar la documentación de [Persona](https://github.com/adonisjs/adonis-persona#events-emitted), además de la propia de [Adonis (Events)](https://adonisjs.com/docs/4.1/events).
+
+```js
+// start/events.js
+
+Event.on('user::created', 'Auth/SendEmailVerifyEmail.method');
+Event.on('forgot::password', 'Auth/SendEmailForgotPassword.method');
+```
+
+- **SendEmailForgotPassword**: Enviar un correo electrónico de recuperación de contraseña.
+- **SendEmailVerifyEmail**: Enviar un correo electrónico cuando se registra un usuario con la intención de verificar la cuenta.
+
