@@ -18,6 +18,8 @@ La intención de este repositorio es la de ahorrarnos tiempo cada vez que queram
 - [Iniciando com AdonisJS: Autenticação JWT e API REST](https://blog.rocketseat.com.br/adonis-auth-jwt-api-rest/)
 - [Adonis Tutorial - JWT Authentication](https://www.techiediaries.com/adonis-jwt-authentication/)
 - [Lausanne-eSports/api.els.team](https://github.com/Lausanne-eSports/api.els.team)
+- [How to prevent default html reponse on api only project errors?](https://github.com/adonisjs/adonis-framework/issues/919)
+  - Para visualizar las respuestas en JSON y no html hay que modificar la variable `NODE_ENV=development` a `NODE_ENV=production`.
 
 # Instalación
 
@@ -93,25 +95,33 @@ Ejecutar el siguente comando para llevar adelante las migraciones.
 ```bash
 > adonis route:list
 
-┌───────────────────────────┬──────────┬───────────────────────────────────────────────┬──────────────────────┬──────────────────────┬────────┐
-│ Route                     │ Verb(s)  │ Handler                                       │ Middleware           │ Name                 │ Domain │
-├───────────────────────────┼──────────┼───────────────────────────────────────────────┼──────────────────────┼──────────────────────┼────────┤
-│ /                         │ HEAD,GET │ Closure                                       │                      │ /                    │        │
-├───────────────────────────┼──────────┼───────────────────────────────────────────────┼──────────────────────┼──────────────────────┼────────┤
-│ /auth/register            │ POST     │ Auth/RegisterController.store                 │ av:AuthRegister      │ /register            │        │
-├───────────────────────────┼──────────┼───────────────────────────────────────────────┼──────────────────────┼──────────────────────┼────────┤
-│ /auth/verify-email/:token │ POST     │ Auth/RegisterVerifyEmailController.validate   │                      │ /verify-email/:token │        │
-├───────────────────────────┼──────────┼───────────────────────────────────────────────┼──────────────────────┼──────────────────────┼────────┤
-│ /auth/login               │ POST     │ Auth/LoginController.authenticate             │ av:AuthLogin         │ /login               │        │
-├───────────────────────────┼──────────┼───────────────────────────────────────────────┼──────────────────────┼──────────────────────┼────────┤
-│ /auth/psw-forgot          │ POST     │ Auth/PasswordController.forgotPassword        │                      │ /psw-forgot          │        │
-├───────────────────────────┼──────────┼───────────────────────────────────────────────┼──────────────────────┼──────────────────────┼────────┤
-│ /auth/psw-update/:token   │ PUT      │ Auth/PasswordController.updatePasswordByToken │ av:AuthPasswordToken │ /psw-update/:token   │        │
-├───────────────────────────┼──────────┼───────────────────────────────────────────────┼──────────────────────┼──────────────────────┼────────┤
-│ /auth/logout              │ DELETE   │ Auth/LogoutController.deauthenticate          │ auth                 │ /logout              │        │
-├───────────────────────────┼──────────┼───────────────────────────────────────────────┼──────────────────────┼──────────────────────┼────────┤
-│ /auth/profile             │ PUT      │ Auth/ProfileController.update                 │ auth,av:AuthProfile  │ /profile             │        │
-├───────────────────────────┼──────────┼───────────────────────────────────────────────┼──────────────────────┼──────────────────────┼────────┤
-│ /auth/psw-update          │ PUT      │ Auth/PasswordController.updatePassword        │ auth,av:AuthPassword │ /psw-update          │        │
-└───────────────────────────┴──────────┴───────────────────────────────────────────────┴──────────────────────┴──────────────────────┴────────┘
+┌───────────────────────────┬──────────┬───────────────────────────────────────────────┬────────────────────────┬──────────────────────┬────────┐
+│ Route                     │ Verb(s)  │ Handler                                       │ Middleware             │ Name                 │ Domain │
+├───────────────────────────┼──────────┼───────────────────────────────────────────────┼────────────────────────┼──────────────────────┼────────┤
+│ /                         │ HEAD,GET │ Closure                                       │                        │ /                    │        │
+├───────────────────────────┼──────────┼───────────────────────────────────────────────┼────────────────────────┼──────────────────────┼────────┤
+│ /auth/register            │ POST     │ Auth/RegisterController.store                 │ av:AuthRegister        │ /register            │        │
+├───────────────────────────┼──────────┼───────────────────────────────────────────────┼────────────────────────┼──────────────────────┼────────┤
+│ /auth/verify-email/:token │ POST     │ Auth/RegisterVerifyEmailController.validate   │                        │ /verify-email/:token │        │
+├───────────────────────────┼──────────┼───────────────────────────────────────────────┼────────────────────────┼──────────────────────┼────────┤
+│ /auth/login               │ POST     │ Auth/LoginController.authenticate             │ av:AuthLogin           │ /login               │        │
+├───────────────────────────┼──────────┼───────────────────────────────────────────────┼────────────────────────┼──────────────────────┼────────┤
+│ /auth/psw-forgot          │ POST     │ Auth/PasswordController.forgotPassword        │                        │ /psw-forgot          │        │
+├───────────────────────────┼──────────┼───────────────────────────────────────────────┼────────────────────────┼──────────────────────┼────────┤
+│ /auth/psw-update/:token   │ PUT      │ Auth/PasswordController.updatePasswordByToken │ av:AuthPasswordByToken │ /psw-update/:token   │        │
+├───────────────────────────┼──────────┼───────────────────────────────────────────────┼────────────────────────┼──────────────────────┼────────┤
+│ /auth/logout              │ DELETE   │ Auth/LogoutController.deauthenticate          │ auth                   │ /logout              │        │
+├───────────────────────────┼──────────┼───────────────────────────────────────────────┼────────────────────────┼──────────────────────┼────────┤
+│ /auth/profile             │ HEAD,GET │ Auth/ProfileController.currentData            │ auth                   │ /profile             │        │
+├───────────────────────────┼──────────┼───────────────────────────────────────────────┼────────────────────────┼──────────────────────┼────────┤
+│ /auth/profile-update      │ PUT      │ Auth/ProfileController.update                 │ auth,av:AuthProfile    │ /profile-update      │        │
+├───────────────────────────┼──────────┼───────────────────────────────────────────────┼────────────────────────┼──────────────────────┼────────┤
+│ /auth/psw-update          │ PUT      │ Auth/PasswordController.updatePassword        │ auth,av:AuthPassword   │ /psw-update          │        │
+└───────────────────────────┴──────────┴───────────────────────────────────────────────┴────────────────────────┴──────────────────────┴────────┘
 ```
+
+Encabezado necesario para las peticiones a la API a través de una ruta protegida con el **middleware auth**:
+
+- Authorization: Bearer tokenUsuario
+
+> Es necesario el token del usuario para llevar adelante las peticiones http.
