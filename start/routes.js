@@ -23,6 +23,8 @@ Route.get('/', () => {
   };
 });
 
+// AUTENTICACIÓN
+// ---------------------------------------------------------------------------------------------------------------------
 Route.group(() => {
   Route.post('register', 'RegisterController.store').validator('AuthRegister');
   Route.post('verify-email/:token', 'RegisterVerifyEmailController.validate');

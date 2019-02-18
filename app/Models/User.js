@@ -27,7 +27,7 @@ class User extends Model {
    * @var array
    */
   static get visible () {
-    return ['email', 'name', 'username', 'account_status', 'id'];
+    return ['email', 'name', 'username'];
   }
 
   // RELACIONES
