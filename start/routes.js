@@ -33,10 +33,9 @@ Route.group(() => {
   Route.put('psw-update/:token', 'PasswordController.updatePasswordByToken').validator('AuthPasswordByToken');
 }).prefix('auth').namespace('Auth');
 
-Route.post('register-unverified', 'RegisterController.unverified')
-  .prefix('auth')
-  .namespace('Auth')
-  .middleware(['auth']);
+Route.group(() => {
+  Route.post('register-unverified', 'RegisterController.unverified');
+}).prefix('auth').namespace('Auth').middleware(['auth']);
 
 Route.group(() => {
   Route.delete('logout', 'LogoutController.deauthenticate');
