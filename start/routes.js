@@ -38,4 +38,4 @@ Route.group(() => {
   Route.get('profile', 'ProfileController.currentData');
   Route.put('profile-update', 'ProfileController.update').validator('AuthProfile');
   Route.put('psw-update', 'PasswordController.updatePassword').validator('AuthPassword');
-}).prefix('auth').namespace('Auth').middleware(['auth']);
+}).prefix('auth').namespace('Auth').middleware(['auth', 'verified']);

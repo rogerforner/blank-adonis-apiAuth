@@ -1,5 +1,7 @@
 > **blank-adonis-apiAuth**, licencia [MIT](https://github.com/rogerforner/blank-adonis-apiAuth/blob/master/LICENCE.md).
 
+---
+
 - [1. Info](#1-info)
 - [2. Enlaces](#2-enlaces)
 - [3. Instalación](#3-instalación)
@@ -24,10 +26,6 @@
 
 La intención de este repositorio es la de ahorrarnos tiempo cada vez que queramos iniciar un proyecto **API** que requiera de autenticación de usuarios.
 
-**TODO**
-
-- [ ] Middleware para cuenta verificada
-
 # 2. Enlaces
 
 **Principales**:
@@ -42,6 +40,7 @@ La intención de este repositorio es la de ahorrarnos tiempo cada vez que queram
 - [Lausanne-eSports/api.els.team](https://github.com/Lausanne-eSports/api.els.team)
 - [How to prevent default html reponse on api only project errors?](https://github.com/adonisjs/adonis-framework/issues/919)
   - Para visualizar las respuestas en JSON y no html hay que modificar la variable `NODE_ENV=development` a `NODE_ENV=production`.
+- [Anexo:Códigos de estado HTTP](https://es.wikipedia.org/wiki/Anexo:C%C3%B3digos_de_estado_HTTP)
 
 # 3. Instalación
 
@@ -192,6 +191,7 @@ Event.on('forgot::password', 'Auth/SendEmailForgotPassword.method');
 
 > _app/Middleware_
 
+- **EmailVerified**: Controlar el estado de verificación del email del usuario.
 - **ForceJson**: Forzar las respuestas en JSON. Por ejemplo, evitar las respuestas de errores en HTML.
 
 # 9. Validators
