@@ -133,6 +133,8 @@ Ejecutar el siguente comando para llevar adelante las migraciones.
 ├───────────────────────────┼──────────┼───────────────────────────────────────────────┼───────────────────────────────┼──────────────────────┼────────┤
 │ /auth/psw-update/:token   │ PUT      │ Auth/PasswordController.updatePasswordByToken │ av:AuthPasswordByToken        │ /psw-update/:token   │        │
 ├───────────────────────────┼──────────┼───────────────────────────────────────────────┼───────────────────────────────┼──────────────────────┼────────┤
+│ /auth/register-unverified │ POST     │ Auth/RegisterController.unverified            │ auth                          │ /register-unverified │        │
+├───────────────────────────┼──────────┼───────────────────────────────────────────────┼───────────────────────────────┼──────────────────────┼────────┤
 │ /auth/logout              │ DELETE   │ Auth/LogoutController.deauthenticate          │ auth,verified                 │ /logout              │        │
 ├───────────────────────────┼──────────┼───────────────────────────────────────────────┼───────────────────────────────┼──────────────────────┼────────┤
 │ /auth/profile             │ HEAD,GET │ Auth/ProfileController.currentData            │ auth,verified                 │ /profile             │        │
