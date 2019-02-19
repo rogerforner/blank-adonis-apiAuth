@@ -15,10 +15,8 @@ class RegisterController {
     // const user        = await Persona.register(payload);
     // const accessToken = await auth.generate(user);
 
-    return response.ok({
-      // accessToken,
-      status: 200,
-      message: 'Account created successfully'
+    return response.status(201).json({
+      status: 'Account created successfully'
     });
   }
 }

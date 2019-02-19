@@ -9,10 +9,9 @@ class LoginController {
     const user   = await Persona.verify(payload);
     const tokens = await auth.generate(user);
 
-    return response.ok({
-      tokens,
-      status: 200,
-      message: 'Logged in successfully'
+    return response.status(200).json({
+      status: 'Logged in successfully',
+      tokens
     });
   }
 }

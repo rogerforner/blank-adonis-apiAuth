@@ -22,9 +22,8 @@ class ProfileController {
 
     await Persona.updateProfile(user, payload);
 
-    return response.ok({
-      status: 200,
-      message: 'Profile updated successfully'
+    return response.status(200).json({
+      status: 'Profile updated successfully'
     });
   }
 }

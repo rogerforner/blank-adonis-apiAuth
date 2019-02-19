@@ -198,8 +198,6 @@ Event.on('forgot::password', 'Auth/SendEmailForgotPassword.method');
 
 > _app/Validators_
 
-Los "validators" se utilizan para procesar/validar los datos recibidos a la API a través de los controladores. Estos datos se suelen pasar a través de, por ejemplo, un formulario.
-
 - **AuthLogin**: Validar los datos necesarios para efectuar el login/autenticación del usuario.
 - **AuthPassword**: Validar los datos necesarios para actualizar el password del usuario (auth - panel de administración).
 - **AuthPasswordByToken**: Validar los datos necesarios para actualizar el password del usuario (no auth - recuperar password).

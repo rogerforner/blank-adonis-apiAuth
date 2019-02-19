@@ -9,9 +9,8 @@ class RegisterVerifyEmailController {
     
     await Persona.verifyEmail(token);
 
-    return response.ok({
-      status: 200,
-      message: 'Email verified successfully'
+    return response.status(200).json({
+      status: 'Email verified successfully'
     });
   }
 }

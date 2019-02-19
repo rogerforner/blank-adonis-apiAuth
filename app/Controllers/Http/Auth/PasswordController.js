@@ -17,9 +17,8 @@ class PasswordController {
 
     await Persona.updatePassword(user, payload);
 
-    return response.ok({
-      status: 200,
-      message: 'Password updated successfully'
+    return response.status(200).json({
+      status: 'Password updated successfully'
     });
   }
 
@@ -34,9 +33,8 @@ class PasswordController {
   
     await Persona.updatePasswordByToken(token, payload);
 
-    return response.ok({
-      status: 200,
-      message: 'Password updated successfully'
+    return response.status(200).json({
+      status: 'Password updated successfully'
     });
   }
 

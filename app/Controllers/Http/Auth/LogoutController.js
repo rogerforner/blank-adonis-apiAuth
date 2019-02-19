@@ -6,9 +6,8 @@ class LogoutController {
 
     await auth.revokeTokens([headerToken], true);
 
-    return response.ok({
-      status: 200,
-      message: 'Logged out successfully'
+    return response.status(200).json({
+      status: 'Logged out successfully'
     });
   }
 }
