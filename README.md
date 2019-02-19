@@ -167,6 +167,7 @@ Controladores utilizados única y exclusivamente para llevar adelante la autenti
   - **Obtener datos usuario** a través del método `currentData ({ auth }) {}`.
   - **Actualizar datos usuario** a través del método `update ({ request, auth, response }) {}`.
 - **RegisterController**: Gestionar el registro de un usuario.
+  - **Reenviar email de verificación** a través del método `unverified ({ auth }) {}`.
 - **RegisterVerifyEmailController**: Gestionar si un usuario ha verificado su cuenta haciendo clic en el enlace enviado a través de correo electrónico.
 
 # 7. Listeners

@@ -1,8 +1,11 @@
 'use strict'
 
+const Event   = use('Event');
 const Persona = use("Persona");
 
 class RegisterController {
+  // REGISTRAR USUARIO
+  // -------------------------------------------------------------------------------------------------------------------
   async store ({ request, auth, response }) {
     const payload = request.only([
       'email',
@@ -18,6 +21,16 @@ class RegisterController {
     return response.status(201).json({
       status: 'Account created successfully'
     });
+  }
+
+  // REENVIAR EMAIL VERIFICACIÓN
+  // -------------------------------------------------------------------------------------------------------------------
+  async unverified ({ auth }) {
+    const user      = await auth.user;
+    const userToken = await user.tokens().where('type', 'email').first();
+    const token     = userToken.token;
+    
+    Event.fire('user::created', { user, token });
   }
 }
 
