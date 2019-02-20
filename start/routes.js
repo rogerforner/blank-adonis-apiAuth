@@ -16,13 +16,6 @@
 const Env   = use('Env');
 const Route = use('Route');
 
-Route.get('/', () => {
-  return {
-    this  : Env.get('APP_NAME'),
-    uptime: process.uptime()
-  };
-});
-
 // AUTENTICACIÓN
 // ---------------------------------------------------------------------------------------------------------------------
 Route.group(() => {
@@ -43,3 +36,12 @@ Route.group(() => {
   Route.put('profile-update', 'ProfileController.update').validator('AuthProfile');
   Route.put('psw-update', 'PasswordController.updatePassword').validator('AuthPassword');
 }).prefix('auth').namespace('Auth').middleware(['auth', 'verified']);
+
+// WILDCARD ROUTE (siempre al final)
+// ---------------------------------------------------------------------------------------------------------------------
+Route.any('*', () => {
+  return {
+    this  : Env.get('APP_NAME'),
+    uptime: process.uptime()
+  };
+});
