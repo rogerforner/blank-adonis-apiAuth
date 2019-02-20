@@ -63,6 +63,7 @@ Instalamos las dependencias con [npm](https://www.npmjs.com/).
 ```bash
 "dependencies": {
   "@adonisjs/ace": "^5.0.8",
+  "@adonisjs/antl": "^2.0.7",
   "@adonisjs/auth": "^3.0.7",
   "@adonisjs/bodyparser": "^2.0.5",
   "@adonisjs/cors": "^1.0.7",
