@@ -97,6 +97,7 @@ Generamos la APP_KEY.
 
 - `APP_LOCALE=` Insertaremos el código de idioma [ISO639](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) tal y como se explica en la [documentación de Adonis (Internationalization)](https://adonisjs.com/docs/4.1/internationalization). El directorio en el que generar más idiomas/traducciones es _resources/locales_.
 - `MAIL_FROM=` Insertaremos el email que queramos que aparezca como remitente. Por ejemplo `MAIL_FROM=no-reply@rogerforner.com`.
+- `APP_URL_VIEW=` URL en la que se encuentren las vistas de nuestra APP. Por ejemplo, no es útil redirigir a nuestra API dado que a través de ésta no se visualizan las vistas.
 
 ## 3.2. Migraciones
 
