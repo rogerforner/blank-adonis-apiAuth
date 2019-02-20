@@ -5,7 +5,7 @@
 - [1. Info](#1-info)
 - [2. Enlaces](#2-enlaces)
 - [3. Instalación](#3-instalación)
-  - [3.1. Configuración](#31-configuración)
+  - [3.1. Configuración (.env)](#31-configuración-env)
   - [3.2. Migraciones](#32-migraciones)
 - [4. Servidor de desarrollo](#4-servidor-de-desarrollo)
 - [5. Routes](#5-routes)
