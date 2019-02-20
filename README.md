@@ -79,7 +79,7 @@ Instalamos las dependencias con [npm](https://www.npmjs.com/).
 
 > "sqlite3" cambiará dependiendo del tipo de gestor [de base de datos que se vaya a utilizar](https://adonisjs.com/docs/4.1/database).
 
-## 3.1. Configuración
+## 3.1. Configuración (.env)
 
 Copiamos el archivo _.env.example_ a _.env_ e insertamos todos los datos necesarios.
 
@@ -96,7 +96,7 @@ Generamos la APP_KEY.
 **Variables propias**:
 
 - `APP_LOCALE=` Insertaremos el código de idioma [ISO639](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) tal y como se explica en la [documentación de Adonis (Internationalization)](https://adonisjs.com/docs/4.1/internationalization). El directorio en el que generar más idiomas/traducciones es _resources/locales_.
-- `MAIL_FROM=` Insteraremos el email que queramos que aparezca como remitente. Por ejemplo `MAIL_FROM=no-reply@rogerforner.com`.
+- `MAIL_FROM=` Insertaremos el email que queramos que aparezca como remitente. Por ejemplo `MAIL_FROM=no-reply@rogerforner.com`.
 
 ## 3.2. Migraciones
 
