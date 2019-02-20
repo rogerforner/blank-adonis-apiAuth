@@ -1,0 +1,8 @@
+{
+  "authLogin"   : "Logged in",
+  "authLogout"  : "Logged out",
+  "authPassword": "Password updated",
+  "authProfile" : "Profile updated",
+  "authRegister": "Account created",
+  "authEmail"   : "Email verified"
+}

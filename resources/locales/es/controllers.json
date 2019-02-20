@@ -1,0 +1,8 @@
+{
+  "authLogin"   : "Sesión iniciada",
+  "authLogout"  : "Sesión cerrada",
+  "authPassword": "Contraseña actualizada",
+  "authProfile" : "Perfil actualizado",
+  "authRegister": "Cuenta creada",
+  "authEmail"   : "Correo electrónico verificado"
+}

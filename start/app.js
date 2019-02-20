@@ -11,6 +11,7 @@
 |
 */
 const providers = [
+  '@adonisjs/antl/providers/AntlProvider',
   '@adonisjs/auth/providers/AuthProvider',
   '@adonisjs/bodyparser/providers/BodyParserProvider',
   '@adonisjs/cors/providers/CorsProvider',

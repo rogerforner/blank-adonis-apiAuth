@@ -1,6 +1,7 @@
 'use strict'
 
-const Persona = use("Persona");
+const Antl    = use('Antl');
+const Persona = use('Persona');
 
 class LoginController {
   async authenticate ({ request, auth, response }) {
@@ -10,7 +11,7 @@ class LoginController {
     const tokens = await auth.generate(user);
 
     return response.status(200).json({
-      status: 'Logged in successfully',
+      status: Antl.formatMessage('controllers.authLogin'),
       tokens
     });
   }

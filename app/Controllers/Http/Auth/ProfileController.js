@@ -1,5 +1,6 @@
 'use strict'
 
+const Antl    = use('Antl');
 const Persona = use("Persona");
 
 class ProfileController {
@@ -23,7 +24,7 @@ class ProfileController {
     await Persona.updateProfile(user, payload);
 
     return response.status(200).json({
-      status: 'Profile updated successfully'
+      status: Antl.formatMessage('controllers.authProfile')
     });
   }
 }

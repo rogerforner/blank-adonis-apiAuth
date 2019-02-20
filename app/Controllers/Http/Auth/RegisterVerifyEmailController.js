@@ -1,5 +1,6 @@
 'use strict'
 
+const Antl       = use('Antl');
 const Encryption = use('Encryption');
 const Persona    = use('Persona');
 
@@ -10,7 +11,7 @@ class RegisterVerifyEmailController {
     await Persona.verifyEmail(token);
 
     return response.status(200).json({
-      status: 'Email verified successfully'
+      status: Antl.formatMessage('controllers.authEmail')
     });
   }
 }

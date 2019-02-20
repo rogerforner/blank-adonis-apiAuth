@@ -1,5 +1,6 @@
 'use strict'
 
+const Antl       = use('Antl');
 const Encryption = use('Encryption');
 const Persona    = use("Persona");
 
@@ -18,7 +19,7 @@ class PasswordController {
     await Persona.updatePassword(user, payload);
 
     return response.status(200).json({
-      status: 'Password updated successfully'
+      status: Antl.formatMessage('controllers.authPassword')
     });
   }
 
@@ -34,7 +35,7 @@ class PasswordController {
     await Persona.updatePasswordByToken(token, payload);
 
     return response.status(200).json({
-      status: 'Password updated successfully'
+      status: Antl.formatMessage('controllers.authPassword')
     });
   }
 

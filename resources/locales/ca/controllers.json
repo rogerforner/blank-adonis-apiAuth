@@ -1,0 +1,8 @@
+{
+  "authLogin"   : "Sessió iniciada",
+  "authLogout"  : "Sessió tancada",
+  "authPassword": "Contrasenya actualitzada",
+  "authProfile" : "Perfil actualitzat",
+  "authRegister": "Compte creat",
+  "authEmail"   : "Correu electrònic verificat"
+}

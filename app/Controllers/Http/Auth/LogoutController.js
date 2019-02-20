@@ -1,5 +1,7 @@
 'use strict'
 
+const Antl = use('Antl');
+
 class LogoutController {
   async deauthenticate ({ response, auth }) {
     const headerToken = auth.getAuthHeader();
@@ -7,7 +9,7 @@ class LogoutController {
     await auth.revokeTokens([headerToken], true);
 
     return response.status(200).json({
-      status: 'Logged out successfully'
+      status: Antl.formatMessage('controllers.authLogout')
     });
   }
 }

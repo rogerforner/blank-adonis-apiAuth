@@ -1,5 +1,6 @@
 'use strict'
 
+const Antl    = use('Antl');
 const Event   = use('Event');
 const Persona = use("Persona");
 
@@ -19,7 +20,7 @@ class RegisterController {
     // const accessToken = await auth.generate(user);
 
     return response.status(201).json({
-      status: 'Account created successfully'
+      status: Antl.formatMessage('controllers.authRegister')
     });
   }
 
